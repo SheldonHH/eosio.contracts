@@ -2,7 +2,7 @@
 #include "bos.helper.cpp"
 
 using namespace eosio;
-namespace bosio {
+namespace bos {
     // available refund percentage
     uint64_t bosio_issuance::get_bought_period(uint64_t day) {
         if (day <= 90) {

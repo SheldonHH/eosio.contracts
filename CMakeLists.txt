@@ -30,7 +30,7 @@ else()
 endif()
 
 
-add_subdirectory(bosio.issuance)
+add_subdirectory(bos.issuance)
 add_subdirectory(eosio.bios)
 add_subdirectory(eosio.msig)
 add_subdirectory(eosio.wrap)

@@ -5,9 +5,9 @@
 #include <unistd.h>
 #include <eosiolib/time.hpp>
 
-//namespace bosio {
+//namespace bos {
 using namespace eosio;
-namespace bosio {
+namespace bos {
     void bosio_issuance::bidbos(const name owner, uint64_t symday, asset mappedasset) {
         require_auth(owner);
         userbids_table _userbids(_self, owner.value); // 建立user scope

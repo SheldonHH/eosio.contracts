@@ -2,7 +2,7 @@
 #include "bos.helper.cpp"
 
 using namespace eosio;
-namespace bosio {
+namespace bos {
     uint64_t bosio_issuance::superewardpert(uint64_t super_reward, uint64_t rank) {
         if (rank == 1) {
             return super_reward * 0.4;

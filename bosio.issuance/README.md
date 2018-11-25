@@ -1,10 +1,10 @@
-# bosio.isssuance
+# bos.isssuance
 
 ## 1. 发行 issuance.cpp
 
 ##### 1.1. timechecking() 手动时间检查
 
-每5分钟或5分钟 call 一次手动轮询，更新 singleton `_issuance.set(issuestate{xxx}, "bosio.issuance"_n);`
+每5分钟或5分钟 call 一次手动轮询，更新 singleton `_issuance.set(issuestate{xxx}, "bos.issuance"_n);`
 
 ***调试***: 可设置oneday参数为60 (一分钟)，300 (五分钟），或3600 (一小时）亦或 86400 (一天)
 
@@ -81,7 +81,7 @@ foreach_token
 
 
 
-## 3. 回购 bosio.refund
+## 3. 回购 bos.refund
 
 ##### 3.1 `refundtoken` 
 
@@ -106,10 +106,10 @@ foreach_token
 
 
 
-## 4. 分红 bosio.dividends
+## 4. 分红 bos.dividends
 
 
-每一期的第二回购期和第三回购期 返还给项目方`bosio.foundation`
+每一期的第二回购期和第三回购期 返还给项目方`bos.foundation`
 
 例如：在1-100期内投资
 
@@ -131,7 +131,7 @@ calculatedividend(today, divdsymraw);
 
 
 
-## 5. 开奖 bosio.reward
+## 5. 开奖 bos.reward
 
 
   360+30天后所得BOS.BTC， BOS.ETH, BOS.EOS
@@ -164,7 +164,7 @@ supereward能确定
 
 
 
-## 6. TABLE和结构 bosio.issuance.hpp
+## 6. TABLE和结构 bos.issuance.hpp
 
 #### 6.1 singleton 用于激励天
 
@@ -250,7 +250,7 @@ _pioneeraccts(_self, _self.value)
 
 
 
-## 7. 其他辅助函数 bosio.helper.cpp
+## 7. 其他辅助函数 bos.helper.cpp
 
 
 
@@ -336,7 +336,7 @@ static constexpr eosio::name issuance_account{"hongsbidding"_n};
 dividend_account
 
 ```
-static constexpr eosio::name dividend_account{"bosio.fund"_n};
+static constexpr eosio::name dividend_account{"bos.fund"_n};
 ```
 
 

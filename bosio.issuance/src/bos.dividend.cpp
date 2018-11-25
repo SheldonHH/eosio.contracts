@@ -2,7 +2,7 @@
 #include "bos.helper.cpp"
 
 using namespace eosio;
-namespace bosio {
+namespace bos {
     // 这里不更新dailybids或则dailyorders，仍保持原样，用ava
     void bosio_issuance::calculatedividend(uint64_t today, uint64_t divdsymraw) {
         uint64_t first_divday; // 一级分红

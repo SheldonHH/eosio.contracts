@@ -7,7 +7,7 @@
 //#include <boost/property_tree/json_parser.hpp>
 
 using namespace eosio;
-namespace bosio {
+namespace bos {
     //map数据按照值来排序
     void bosio_issuance::MapSortOfValue(std::vector<std::pair<uint64_t,uint64_t> >& vec,std::map<uint64_t,uint64_t>& m)
     {

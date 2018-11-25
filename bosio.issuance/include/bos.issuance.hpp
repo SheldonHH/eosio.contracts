@@ -15,10 +15,10 @@
 using namespace eosio;
 using namespace std;
 
-namespace bosio {
+namespace bos {
     typedef uint64_t symbol_name;
 
-    class [[eosio::contract("bosio.issuance")]] bosio_issuance : public contract {
+    class [[eosio::contract("bos.issuance")]] bosio_issuance : public contract {
     public:
         using contract::contract;
         bosio_issuance(name receiver, name code,  datastream<const char*> ds): contract(receiver, code, ds),
@@ -29,7 +29,7 @@ namespace bosio {
         {
                 _istate = _issuance.exists() ? _issuance.get() :get_default_param();
         }
-        struct [[eosio::table, eosio::contract("bosio.issuance")]] dailybid {
+        struct [[eosio::table, eosio::contract("bos.issuance")]] dailybid {
             uint64_t symday;
             asset masset;
             std::set<name> biddedusers;
@@ -40,7 +40,7 @@ namespace bosio {
         typedef eosio::multi_index<"dailybids"_n, dailybid > dailybids_table;
         dailybids_table _dailybids;
 
-        struct [[eosio::table, eosio::contract("bosio.issuance")]] dailyorder {
+        struct [[eosio::table, eosio::contract("bos.issuance")]] dailyorder {
             uint64_t symday;
             asset masset;
             uint64_t symbol;
@@ -52,14 +52,14 @@ namespace bosio {
         typedef eosio::multi_index<"dailyorders"_n, dailyorder,  indexed_by< name("symbol"), const_mem_fun<dailyorder, uint64_t, &dailyorder::by_sym>>> dailyorders_table;
         dailyorders_table _dailyorders;
 
-        struct [[eosio::table, eosio::contract("bosio.issuance")]] userbid {
+        struct [[eosio::table, eosio::contract("bos.issuance")]] userbid {
             uint64_t symday;
             asset masset;
             uint64_t primary_key() const { return symday;}
         };
         typedef eosio::multi_index<"userbids"_n, userbid > userbids_table;
 
-        struct [[eosio::table, eosio::contract("bosio.issuance")]] userorder {
+        struct [[eosio::table, eosio::contract("bos.issuance")]] userorder {
             uint64_t symday;
             asset masset;
             uint64_t symbol;
@@ -71,7 +71,7 @@ namespace bosio {
         typedef eosio::multi_index<"userorders"_n, userorder, indexed_by< name("symbol"), const_mem_fun<userorder, uint64_t, &userorder::by_sym>>> userorders_table;
 
 
-        struct [[eosio::table("pioneeracct"), eosio::contract("bosio.issuance")]]  pioneeracct{
+        struct [[eosio::table("pioneeracct"), eosio::contract("bos.issuance")]]  pioneeracct{
             name acct;
             uint64_t primary_key() const { return  acct.value; }
         };
@@ -80,7 +80,7 @@ namespace bosio {
 
 
 
-        struct [[eosio::table, eosio::contract("bosio.issuance")]] transferstruct {
+        struct [[eosio::table, eosio::contract("bos.issuance")]] transferstruct {
             name from;
             name to;
             asset quantity;
@@ -88,7 +88,7 @@ namespace bosio {
             EOSLIB_SERIALIZE( transferstruct, (from)(to)(quantity)(memo))
         };
 
-        struct [[eosio::table("global"), eosio::contract("bosio.issuance")]] issuestate{
+        struct [[eosio::table("global"), eosio::contract("bos.issuance")]] issuestate{
             uint64_t curday;
             uint64_t startbidtime;
             uint64_t oneday;           // oneday: 一天的长度
@@ -122,7 +122,7 @@ namespace bosio {
 
 
         static constexpr eosio::name active_permission{"active"_n};
-        static constexpr eosio::name dividend_account{"bosio.fund"_n};
+        static constexpr eosio::name dividend_account{"bos.fund"_n};
         static constexpr eosio::name bostoken_account{"hongsbidding"_n};
         static constexpr eosio::name pegtoken_account{"hongsbidding"_n};
         static constexpr eosio::name issuance_account{"hongsbidding"_n};
@@ -143,7 +143,7 @@ namespace bosio {
         ACTION processxfer ( uint64_t payload);
 
         // @abi table pendxfers i64
-        struct [[eosio::table, eosio::contract("bosio.issuance")]] pendxfer {
+        struct [[eosio::table, eosio::contract("bos.issuance")]] pendxfer {
                 uint64_t        xfer_id;
                 name    token_contract;
                 name    from;
@@ -159,7 +159,7 @@ namespace bosio {
 
 
         // @abi table compxfers i64
-        struct [[eosio::table, eosio::contract("bosio.issuance")]] compxfer {
+        struct [[eosio::table, eosio::contract("bos.issuance")]] compxfer {
                 uint64_t        xfer_id;
                 name            token_contract;
                 name            from;
@@ -174,7 +174,7 @@ namespace bosio {
         };
         typedef eosio::multi_index<"compxfers"_n, compxfer> compxfer_table;
 
-        struct [[eosio::table, eosio::contract("bosio.issuance")]] deferfuncarg {
+        struct [[eosio::table, eosio::contract("bos.issuance")]] deferfuncarg {
                 uint64_t payload;
         };
     private:
@@ -187,22 +187,22 @@ namespace bosio {
         issuestate _istate;
         void foreach_token(uint64_t day, string option);
 
-        // bosio.bidding
+        // bos.bidding
         void bidbos(const name owner, uint64_t symday, asset mappedasset); // when receive eos, btc, eth
         void calculatebid(uint64_t yesterday, uint64_t bidsymraw);
         void sendbos(name receiver, asset masset, double price, uint64_t symday, uint64_t day); // send bos
 
-        // bosio.dividend
+        // bos.dividend
         void calculatedividend(uint64_t today, uint64_t divdsymraw);
 
-        // bosio.refund
+        // bos.refund
         void refundtoken(name owner, uint64_t symday, asset bosrefund); // when receive bos,  send eos, btc, eth
         double avarefundpert(uint64_t symday);
         uint64_t get_bought_period(uint64_t day);
         bool validaterefundmemo(string memo);
 
 
-        // bosio.reward
+        // bos.reward
         void reward_token(uint64_t symraw);
         uint64_t superewardpert(uint64_t super_reward, uint64_t count);
         void sendreward(name receiver, asset usertokenreward, uint64_t day); // eos, btc, eth

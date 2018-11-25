@@ -10,9 +10,9 @@
 #include "bos.reward.cpp"
 #include "bos.helper.cpp"
 
-//namespace bosio {
+//namespace bos {
 using namespace eosio;
-namespace bosio {
+namespace bos {
     // 也可使用非上链的方式，每隔0.5秒用nodeos trigger该函数
     // 12.12: 1544601600
     // 12.24: 1545638400

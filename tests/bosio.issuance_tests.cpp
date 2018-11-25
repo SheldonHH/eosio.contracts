@@ -21,7 +21,7 @@ public:
     bosio_issuance_tester() {
         produce_blocks( 2 );
 
-        create_accounts( { N(alice), N(bob), N(carol), N(eosio.token) N(bosio.issuance)} );
+        create_accounts( { N(alice), N(bob), N(carol), N(eosio.token) N(bos.issuance)} );
         produce_blocks( 2 );
 
         set_code( N(eosio.token), contracts::token_wasm() );
@@ -39,7 +39,7 @@ public:
         string action_type_name = abi_ser.get_action_type(name);
 
         action act;
-        act.account = N(bosio.issuance);
+        act.account = N(bos.issuance);
         act.name    = name;
         act.data    = abi_ser.variant_to_binary( action_type_name, data,abi_serializer_max_time );
 
