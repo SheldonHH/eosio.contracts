@@ -1,33 +1,15 @@
 /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /Users/mac/Desktop/daima/KLIN/learning/Kylinchain/eosio.contracts
 -- The C compiler identification is unknown
--- The CXX compiler identification is AppleClang 10.0.0.10001044
--- Check for working C compiler: /usr/local/bin/cc
--- Check for working C compiler: /usr/local/bin/cc -- broken
-CMake Error at /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.12/Modules/CMakeTestCCompiler.cmake:52 (message):
-  The C compiler
+CMake Error at CMakeLists.txt:2 (project):
+  The CMAKE_C_COMPILER:
 
-    "/usr/local/bin/cc"
+    /usr/local/bin/cc
 
-  is not able to compile a simple test program.
+  is not a full path to an existing compiler tool.
 
-  It fails with the following output:
-
-    Change Dir: /Users/mac/Desktop/daima/KLIN/learning/Kylinchain/eosio.contracts/cmake-build-debug/CMakeFiles/CMakeTmp
-    
-    Run Build Command:"/usr/bin/make" "cmTC_17917/fast"
-    /Library/Developer/CommandLineTools/usr/bin/make -f CMakeFiles/cmTC_17917.dir/build.make CMakeFiles/cmTC_17917.dir/build
-    Building C object CMakeFiles/cmTC_17917.dir/testCCompiler.c.o
-    /usr/local/bin/cc    -o CMakeFiles/cmTC_17917.dir/testCCompiler.c.o   -c /Users/mac/Desktop/daima/KLIN/learning/Kylinchain/eosio.contracts/cmake-build-debug/CMakeFiles/CMakeTmp/testCCompiler.c
-    USAGE: contract.sh <Contract Name> from within the directory
-    make[1]: *** [CMakeFiles/cmTC_17917.dir/testCCompiler.c.o] Error 1
-    make: *** [cmTC_17917/fast] Error 2
-    
-
-  
-
-  CMake will not be able to correctly generate this project.
-Call Stack (most recent call first):
-  CMakeLists.txt:2 (project)
+  Tell CMake where to find the compiler by setting either the environment
+  variable "CC" or the CMake cache entry CMAKE_C_COMPILER to the full path to
+  the compiler, or to the compiler name if it is in the PATH.
 
 
 -- Configuring incomplete, errors occurred!

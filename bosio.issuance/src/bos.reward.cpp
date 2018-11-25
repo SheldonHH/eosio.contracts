@@ -1,5 +1,5 @@
-#include "../include/bosio.issuance.hpp"
-#include "bosio.helper.cpp"
+#include "../include/bos.issuance.hpp"
+#include "bos.helper.cpp"
 
 using namespace eosio;
 namespace bosio {

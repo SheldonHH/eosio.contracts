@@ -1,5 +1,5 @@
-#include "../include/bosio.issuance.hpp"
-#include "bosio.helper.cpp"
+#include "../include/bos.issuance.hpp"
+#include "bos.helper.cpp"
 
 using namespace eosio;
 namespace bosio {
@@ -103,6 +103,20 @@ namespace bosio {
                 update_daily_order.masset = update_daily_order.masset - tokenrefund;
             });
         }
+    }
 
+
+    bool bosio_issuance::validaterefundmemo(string memo) {
+        bool memoformat = true; //TODO: validate memo format, boost and jsoncpp cannot be used
+        // TODO: CSDN: https://blog.csdn.net/hzyong_c/article/details/7163589
+        uint64_t biday;
+        if (memoformat) {
+            uint64_t endbidtimeof_biday = biday * oneday + startbidtime;
+            uint64_t now = current_time() / 1000000;
+            if(now > endbidtimeof_biday + refundbuffertime){
+                return true;
+            }
+        }
+        return false;
     }
 }

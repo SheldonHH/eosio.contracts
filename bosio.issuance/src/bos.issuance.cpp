@@ -1,14 +1,14 @@
-#include "../include/bosio.issuance.hpp"
-#include "bosio.helper.cpp"
+#include "../include/bos.issuance.hpp"
+#include "bos.helper.cpp"
 #include <stdio.h>      /* printf, scanf */
 #include <time.h>       /* time_t, struct tm, time, mktime */
 #include <unistd.h>
 #include <eosiolib/time.hpp>
-#include "bosio.bidding.cpp"
-#include "bosio.refund.cpp"
-#include "bosio.dividend.cpp"
-#include "bosio.reward.cpp"
-#include "bosio.helper.cpp"
+#include "bos.bidding.cpp"
+#include "bos.refund.cpp"
+#include "bos.dividend.cpp"
+#include "bos.reward.cpp"
+#include "bos.helper.cpp"
 
 //namespace bosio {
 using namespace eosio;
@@ -113,20 +113,6 @@ namespace bosio {
         }
 
     };
-
-
-    bool bosio_issuance::validaterefundmemo(string memo) {
-        bool memoformat = true;
-        uint64_t biday;
-        if (memoformat) {
-            uint64_t endbidtimeof_biday = biday * oneday + startbidtime;
-            uint64_t now = current_time() / 1000000;
-            if(now > endbidtimeof_biday + refundbuffertime){
-                return true;
-            }
-        }
-        return false;
-    }
 
 
     void bosio_issuance::printhello() {

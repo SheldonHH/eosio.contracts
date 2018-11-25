@@ -1,8 +1,10 @@
 #pragma once
-#include "../include/bosio.issuance.hpp"
+#include "../include/bos.issuance.hpp"
 #include <tuple>
 #include <utility>
 #include <map>
+//#include <boost/property_tree/ptree.hpp>
+//#include <boost/property_tree/json_parser.hpp>
 
 using namespace eosio;
 namespace bosio {

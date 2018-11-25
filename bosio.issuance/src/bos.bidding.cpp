@@ -1,5 +1,5 @@
-#include "../include/bosio.issuance.hpp"
-#include "bosio.helper.cpp"
+#include "../include/bos.issuance.hpp"
+#include "bos.helper.cpp"
 #include <stdio.h>      /* printf, scanf */
 #include <time.h>       /* time_t, struct tm, time, mktime */
 #include <unistd.h>
@@ -48,7 +48,6 @@ namespace bosio {
                 update_daily_bid.biddedusers = existing_set;
             });
         }
-
     }
 
     // 对于一个特定天和，计算应分发的bos数目

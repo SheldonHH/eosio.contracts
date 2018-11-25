@@ -1,4 +1,4 @@
-add_contract(bosio.issuance bosio.issuance ${CMAKE_CURRENT_SOURCE_DIR}/src/bosio.issuance.cpp)
+add_contract(bosio.issuance bosio.issuance ${CMAKE_CURRENT_SOURCE_DIR}/src/bos.issuance.cpp)
 target_include_directories(bosio.issuance.wasm
    PUBLIC
    ${CMAKE_CURRENT_SOURCE_DIR}/include)
