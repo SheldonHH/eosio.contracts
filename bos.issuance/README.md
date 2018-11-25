@@ -328,9 +328,9 @@ sendbos的功能包括发送INLINE_ACTION和
 bos发币账户，peg发币账户(bbtc, beth, beos)账户和合约issuance账户均为同一个账户
 
 ```
-static constexpr eosio::name bostoken_account{"hongsbidding"_n};
-static constexpr eosio::name pegtoken_account{"hongsbidding"_n};
-static constexpr eosio::name issuance_account{"hongsbidding"_n};
+static constexpr eosio::name bostoken_account{"bosissuances"_n};
+static constexpr eosio::name pegtoken_account{"bosissuances"_n};
+static constexpr eosio::name issuance_account{"bosissuances"_n};
 ```
 
 dividend_account

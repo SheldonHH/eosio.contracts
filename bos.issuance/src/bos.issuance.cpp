@@ -59,14 +59,10 @@ namespace bos {
         eosio::print("_istate: ", _istate.curday);
     }
 
-    void bosio_issuance::init(name owner) {
-        require_auth(owner);
-        eosio::print("My bos account: ", owner);
-        _issuance.set(issuestate{1, }, issuance_account);
-    }
 
-    // 设置：起始竞买时间，每一天是多长，和refund距上一天竞买需要多少秒
-    void bosio_issuance::set_issuance_params(uint64_t startbidtime, uint64_t oneday, uint64_t refundbuffertime) {
+    // 设置：起始竞买时间，每一天是多长，和refund距上一天竞买需要多少秒: 1545724800, 86400, 43200
+    void bosio_issuance::init(uint64_t startbidtime, uint64_t oneday, uint64_t refundbuffertime) {
+        require_auth( _self );
         _issuance.set(issuestate{_istate.curday, startbidtime, oneday, startbidtime+300*oneday, refundbuffertime}, issuance_account);
     }
 
@@ -89,7 +85,7 @@ namespace bos {
     void bosio_issuance::transfer(const name sender, const name receiver) {
         array<char, 33> owner_pubkey_char;
         array<char, 33> active_pubkey_char;
-        const auto transfer = unpack_action_data<bosio_issuance::transferstruct>();
+        const auto transfer = unpack_action_data<bosio_issuance::trxferstruct>();
         if (transfer.from == _self || transfer.to != _self) {
             // this is an outgoing transfer, do nothing
             return;

@@ -80,12 +80,12 @@ namespace bos {
 
 
 
-        struct [[eosio::table, eosio::contract("bos.issuance")]] transferstruct {
+        struct [[eosio::table, eosio::contract("bos.issuance")]] trxferstruct {
             name from;
             name to;
             asset quantity;
             string memo;
-            EOSLIB_SERIALIZE( transferstruct, (from)(to)(quantity)(memo))
+            EOSLIB_SERIALIZE( trxferstruct, (from)(to)(quantity)(memo))
         };
 
         struct [[eosio::table("global"), eosio::contract("bos.issuance")]] issuestate{
@@ -101,11 +101,11 @@ namespace bos {
 
         issuestate get_default_param();
 
-        [[eosio::action]]
-        void init(const name owner);
+//        [[eosio::action]]
+//        void init(const name owner);
 
         [[eosio::action]]
-        void set_issuance_params(uint64_t startbidtime, uint64_t oneday, uint64_t refundbuffertime);
+        void init(uint64_t startbidtime, uint64_t oneday, uint64_t refundbuffertime);
 
         [[eosio::action]]
         void timechecking();
@@ -123,9 +123,9 @@ namespace bos {
 
         static constexpr eosio::name active_permission{"active"_n};
         static constexpr eosio::name dividend_account{"bos.fund"_n};
-        static constexpr eosio::name bostoken_account{"hongsbidding"_n};
-        static constexpr eosio::name pegtoken_account{"hongsbidding"_n};
-        static constexpr eosio::name issuance_account{"hongsbidding"_n};
+        static constexpr eosio::name bostoken_account{"bosissuances"_n};
+        static constexpr eosio::name pegtoken_account{"bosissuances"_n};
+        static constexpr eosio::name issuance_account{"bosissuances"_n};
 
 
 
